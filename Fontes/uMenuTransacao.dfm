@@ -233,7 +233,7 @@ inherited frmMenuTransacao: TfrmMenuTransacao
                   Height = 15
                   Caption = 'Data'
                 end
-                object Label3: TLabel
+                object lbCadastroValor: TLabel
                   Left = 216
                   Top = 8
                   Width = 26
@@ -271,7 +271,7 @@ inherited frmMenuTransacao: TfrmMenuTransacao
                   Height = 23
                   Style = csDropDownList
                   ItemIndex = 0
-                  TabOrder = 2
+                  TabOrder = 3
                   Text = 'Cr'#233'dito'
                   Items.Strings = (
                     'Cr'#233'dito'
@@ -282,7 +282,7 @@ inherited frmMenuTransacao: TfrmMenuTransacao
                   Top = 29
                   Width = 89
                   Height = 23
-                  TabOrder = 3
+                  TabOrder = 2
                   OnKeyPress = edCadastroValorKeyPress
                 end
               end
@@ -294,8 +294,7 @@ inherited frmMenuTransacao: TfrmMenuTransacao
                 Align = alTop
                 ParentBackground = False
                 TabOrder = 1
-                ExplicitTop = 130
-                object Label2: TLabel
+                object lbCadastroNome: TLabel
                   Left = 8
                   Top = 8
                   Width = 33
@@ -307,7 +306,6 @@ inherited frmMenuTransacao: TfrmMenuTransacao
                   Top = 29
                   Width = 593
                   Height = 23
-                  ReadOnly = True
                   TabOrder = 0
                 end
               end

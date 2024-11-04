@@ -1,5 +1,5 @@
 # Extrato Bancário <img src="ExtratoBancario.png" alt="Logo" width="42" height="42">
-[![](https://img.shields.io/badge/release-0.0.1-blue?style=flat-square&logoColor=white)](#)
+[![](https://img.shields.io/badge/release-0.0.3-blue?style=flat-square&logoColor=white)](#)
 
 Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
 

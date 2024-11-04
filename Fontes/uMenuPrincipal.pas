@@ -14,7 +14,9 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
   Vcl.Menus,
-  Vcl.ComCtrls, System.Actions, Vcl.ActnList;
+  Vcl.ComCtrls,
+  System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmMenuPrincipal = class(TForm)
@@ -51,6 +53,7 @@ var
 implementation
 
 uses
+  uUnitAjuda,
   uDataPrincipal,
   uModeloMenu,
   uMenuConfiguracao,
@@ -75,17 +78,20 @@ var
 begin
   if (AClass.InheritsFrom(TfrmModeloMenu)) then
   begin
-    Self.Limpar;
     if not(Assigned(TfrmModeloMenu(AReference))) then
     begin
       AInstance := TfrmModeloMenu(AClass.NewInstance);
-      AInstance.Create(Application);
       TfrmModeloMenu(AReference) := AInstance;
+      AInstance.Create(Application);
       AInstance.Iniciar;
     end;
     AInstance := TfrmModeloMenu(AReference);
     FMenu := TForm(AInstance);
-    AInstance.pnFundo.Parent := Self.pnFundo;
+    if (AInstance.Verificar) then
+    begin
+      Self.Limpar;
+      AInstance.pnFundo.Parent := Self.pnFundo;
+    end;
   end;
 end;
 
@@ -128,6 +134,10 @@ begin
   // Titulo
   Self.Caption := Application.Title;
 
+  // Versao
+  if (Self.sbStatus.Panels.Count > 0) then
+    Self.sbStatus.Panels[0].Text := fnVersion;
+
   // DataModule
   if not(Assigned(dtmDataPrincipal)) then
     dtmDataPrincipal := TdtmDataPrincipal.Create(Application)
@@ -137,7 +147,10 @@ procedure TfrmMenuPrincipal.FormShow(Sender: TObject);
 begin
   // Principal
   Self.Menu(TfrmMenuConfiguracao, frmMenuConfiguracao);
-  Self.Menu(TfrmMenuTransacao, frmMenuTransacao);
+  if (dtmDataPrincipal.Conectado) then
+    Self.Menu(TfrmMenuTransacao, frmMenuTransacao)
+  else
+    Self.Menu(TfrmMenuConfiguracao, frmMenuConfiguracao);
 end;
 
 procedure TfrmMenuPrincipal.Limpar;

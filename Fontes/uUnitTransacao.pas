@@ -50,6 +50,7 @@ type
     function Dado(ADado: Integer): string; overload;
     function Dado(ADado: TDateTime): string; overload;
     function Dado(ADado: TTransacaoTipo): string; overload;
+    function Dado(ADado: String): TTransacaoTipo; overload;
     procedure Editar(AId: Integer; AData: TDateTime; ANome: string; AValor: Double; ATipo: TTransacaoTipo); virtual;
     procedure Remover(AId: Integer); virtual;
     function Verificar: Boolean; virtual;
@@ -71,10 +72,13 @@ function Transacao(AClass: TComponentClass = nil): TTransacaoBase;
 
 implementation
 
+uses
+  uUnitAjuda;
+
 resourcestring
-    RSSQLAdicionar = 'INSERT INTO TB_TRANSACAO (CL_DATA, CL_NOME, CL_VALOR, CL_TIPO) VALUES (''%s'', ''%s'', %f, ''%s'');';
+    RSSQLAdicionar = 'INSERT INTO TB_TRANSACAO (CL_DATA, CL_NOME, CL_VALOR, CL_TIPO) VALUES (''%s'', ''%s'', %s, ''%s'');';
     RSSQLCarregar = 'SELECT CL_ID, CAST(EXTRACT(year FROM CL_DATA) AS VARCHAR(4)) || ''-'' || LPAD(CAST(EXTRACT(month FROM CL_DATA) AS VARCHAR(4)), 2, ''0'') || ''-'' || LPAD(CAST(EXTRACT(day FROM CL_DATA) AS VARCHAR(4)), 2, ''0'') AS CL_DATA, CL_NOME, CL_VALOR, CL_TIPO FROM TB_TRANSACAO WHERE CL_ID = %d;';
-    RSSQLEditar = 'UPDATE TB_TRANSACAO SET CL_DATA = ''%s'', CL_NOME = ''%s'', CL_VALOR = %f, CL_TIPO = ''%s'' WHERE CL_ID = %d;';
+    RSSQLEditar = 'UPDATE TB_TRANSACAO SET CL_DATA = ''%s'', CL_NOME = ''%s'', CL_VALOR = %s, CL_TIPO = ''%s'' WHERE CL_ID = %d;';
     RSSQLRemover = 'DELETE FROM TB_TRANSACAO WHERE CL_ID = %d;';
 
 var
@@ -150,6 +154,14 @@ begin
   // Metodo Virtual
 end;
 
+function TTransacaoBase.Dado(ADado: String): TTransacaoTipo;
+begin
+  if (ADado = 'Crédito') then
+    Result := ttCredito
+  else
+    Result := ttDebito;
+end;
+
 { TTransacaoFireDAC }
 
 procedure TTransacaoFireDAC.Adicionar(AData: TDateTime; ANome: string; AValor: Double; ATipo: TTransacaoTipo);
@@ -161,7 +173,7 @@ begin
   if (Self.Verificar) then
   begin
     AScript := RSSQLAdicionar;
-    AScript := Format(AScript, [Dado(AData),ANome,AValor,Dado(ATipo)]);
+    AScript := Format(AScript, [Dado(AData),ANome,fnFloatToStr(AValor),Dado(ATipo)]);
     Self.Conexao.ExecSQL(AScript);
   end;
 end;
@@ -196,7 +208,7 @@ begin
   if (Self.Verificar) then
   begin
     AScript := RSSQLEditar;
-    AScript := Format(AScript, [AId,Dado(AData),ANome,AValor,Dado(ATipo)]);
+    AScript := Format(AScript, [Dado(AData),ANome,fnFloatToStr(AValor),Dado(ATipo),AId]);
     Self.Conexao.ExecSQL(AScript);
   end;
 end;

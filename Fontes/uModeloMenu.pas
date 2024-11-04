@@ -30,8 +30,9 @@ type
   private
     FPagina: TPanel;
   public
-    procedure Pagina(APagina: TPanel);
     procedure Iniciar; virtual;
+    procedure Pagina(APagina: TPanel);
+    function Verificar: Boolean; virtual;
   end;
 
 var
@@ -59,6 +60,11 @@ begin
     FPagina.Parent := TWinControl(FPagina.Owner);
   FPagina := APagina;
   FPagina.Parent := Self.pnCorpo;
+end;
+
+function TfrmModeloMenu.Verificar: Boolean;
+begin
+  // Metodo Virtual
 end;
 
 end.

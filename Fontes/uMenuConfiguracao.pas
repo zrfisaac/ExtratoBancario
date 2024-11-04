@@ -52,6 +52,7 @@ type
     procedure Habilitar;
     procedure Iniciar; override;
     procedure Ler;
+    function Verificar: Boolean; override;
   end;
 
 var
@@ -65,7 +66,7 @@ uses
 
 resourcestring
   RSErroConectarTitulo = 'Erro de Conexão';
-  RSErroConectarMensagem = 'Falha na conexão com o banco de dados.'#13#10'Verifique sua conexão e tente novamente.'#13#10'%s';
+  RSErroConectarMensagem = 'Falha na conexão com o banco de dados.'#13#10'Verifique sua conexão e tente novamente.'#13#10#13#10'%s';
 
 {$R *.dfm}
 
@@ -84,18 +85,16 @@ procedure TfrmMenuConfiguracao.Conectar;
 begin
   if not(dtmDataPrincipal.Conectado) then
   begin
-    //try
+    try
       dtmDataPrincipal.Servidor := Self.edConexaoServidor.Text;
       dtmDataPrincipal.Porta := Self.edConexaoPorta.Text;
       dtmDataPrincipal.Banco := Self.edConexaoBanco.Text;
       dtmDataPrincipal.Usuario := Self.edConexaoUsuario.Text;
       dtmDataPrincipal.Senha := Self.edConexaoSenha.Text;
       dtmDataPrincipal.Conectar;
-      //Self.Gravar;
+      Self.Gravar;
       Self.btConexao.Caption := 'Desconectar';
-      //Self.Habilitar;
-
-    {
+      Self.Habilitar;
     except
       on E: Exception do
       begin
@@ -107,7 +106,6 @@ begin
         Self.Desconectar;
       end;
     end;
-    }
   end;
 end;
 
@@ -155,6 +153,11 @@ begin
   Self.edConexaoBanco.Text := Config.Ler('Banco', dtmDataPrincipal.Banco);
   Self.edConexaoUsuario.Text := Config.Ler('Usuario', dtmDataPrincipal.Usuario);
   Self.edConexaoSenha.Text := Config.Ler('Senha', dtmDataPrincipal.Senha);
+end;
+
+function TfrmMenuConfiguracao.Verificar: Boolean;
+begin
+  Result := True;
 end;
 
 end.

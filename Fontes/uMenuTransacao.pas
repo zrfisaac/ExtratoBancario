@@ -43,7 +43,7 @@ type
     pnCadastroId: TPanel;
     lbCadastroId: TLabel;
     Panel2: TPanel;
-    Label2: TLabel;
+    lbCadastroNome: TLabel;
     btNovo: TBitBtn;
     btEditar: TBitBtn;
     btCancelar: TBitBtn;
@@ -53,7 +53,7 @@ type
     edCadastroNome: TEdit;
     Label1: TLabel;
     dtCadastroData: TDateTimePicker;
-    Label3: TLabel;
+    lbCadastroValor: TLabel;
     Label4: TLabel;
     cbCadastroTipo: TComboBox;
     edCadastroValor: TEdit;
@@ -76,8 +76,10 @@ type
     procedure Editar;
     procedure Iniciar; override;
     procedure Novo;
+    function Preenchido: Boolean;
     procedure Salvar;
     procedure Update;
+    function Verificar: Boolean; override;
     procedure Visual;
   end;
 
@@ -91,6 +93,14 @@ uses
   uUnitAjuda,
   uUnitConfig,
   uUnitTransacao;
+
+resourcestring
+  RSErroConexaoTitulo = 'Erro de Conexão';
+  RSErroConexaoMensagem = 'Não foi possível estabelecer uma conexão com o banco de dados.'#13#10#13#10'Resolva primeiro o problema de conexão para poder continuar!';
+  RSErroPreenchidoTitulo = 'Aviso!';
+  RSErroPreenchidoMensagem = 'Não foi possível salvar:';
+  RSErroPreenchidoLinha = '* Por favor, preencha o campo %s';
+
 
 {$R *.dfm}
 
@@ -195,21 +205,91 @@ procedure TfrmMenuTransacao.Novo;
 begin
   Self.Tipo := tmNovo;
   Self.Pagina(Self.pnCadastro);
+  Self.edCadastroId.Text := '';
+  Self.dtCadastroData.DateTime := Now;
+  Self.edCadastroValor.Text := '';
+  Self.cbCadastroTipo.ItemIndex := 0;
+  Self.edCadastroNome.Text := '';
   Self.Visual;
+  Self.dtCadastroData.SetFocus;
+end;
+
+function TfrmMenuTransacao.Preenchido: Boolean;
+var
+  AResult: Boolean;
+  ALista: TStrings;
+begin
+  AResult := True;
+  ALista := TStringList.Create;
+  if (Self.edCadastroValor.Text = '') then
+  begin
+    ALista.Add(Format(RSErroPreenchidoLinha,[Self.lbCadastroValor.Caption]));
+    AResult := False;
+  end;
+  if (Self.edCadastroNome.Text = '') then
+  begin
+    ALista.Add(Format(RSErroPreenchidoLinha,[Self.lbCadastroNome.Caption]));
+    AResult := False;
+  end;
+  if not(AResult) then
+    Application.MessageBox(
+      PChar(''
+        + RSErroPreenchidoMensagem
+        + #13#10#13#10
+        + ALista.Text
+      ),
+      PChar(RSErroPreenchidoTitulo),
+      MB_OK + MB_ICONWARNING,
+    );
+  ALista.Free;
+  Result := AResult;
 end;
 
 procedure TfrmMenuTransacao.Salvar;
 begin
-  Self.Tipo := tmBusca;
-  Pagina(Self.pnConsulta);
-  Self.Update;
-  Self.Visual;
+  if (Self.Preenchido) then
+  begin
+    if (Self.Tipo = tmNovo) then
+      Transacao.Adicionar(
+         Self.dtCadastroData.DateTime
+        ,Self.edCadastroNome.Text
+        ,StrToFloatDef(Self.edCadastroValor.Text,0.0)
+        ,Transacao.Dado(Self.cbCadastroTipo.Text)
+      )
+    else
+      Transacao.Editar(
+         Self.Id
+        ,Self.dtCadastroData.DateTime
+        ,Self.edCadastroNome.Text
+        ,StrToFloatDef(Self.edCadastroValor.Text,0.0)
+        ,Transacao.Dado(Self.cbCadastroTipo.Text)
+      );
+    Self.Tipo := tmBusca;
+    Pagina(Self.pnConsulta);
+    Self.Update;
+    Self.Visual;
+  end;
 end;
 
 procedure TfrmMenuTransacao.Update;
 begin
   dtmDataPrincipal.qryPrincipal.Close;
   dtmDataPrincipal.qryPrincipal.Open;
+end;
+
+function TfrmMenuTransacao.Verificar: Boolean;
+begin
+  if (dtmDataPrincipal.conPrincipal.Connected) then
+    Result := True
+  else
+  begin
+    Result := False;
+    Application.MessageBox(
+      PChar(RSErroConexaoMensagem),
+      PChar(RSErroConexaoTitulo),
+      MB_OK + MB_ICONERROR,
+    );
+  end;
 end;
 
 procedure TfrmMenuTransacao.Visual;

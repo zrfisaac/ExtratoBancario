@@ -30,7 +30,13 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     Top = 342
     Width = 584
     Height = 19
-    Panels = <>
+    Panels = <
+      item
+        Width = 50
+      end
+      item
+        Width = 50
+      end>
   end
   object miMenu: TMainMenu
     Left = 16

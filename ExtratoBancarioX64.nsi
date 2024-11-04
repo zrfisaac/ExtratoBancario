@@ -4,7 +4,7 @@
 
 ; Geral
 Name "Extrato Bancário 0.0.3"
-OutFile "Instaladores\ExtratoBancario-0.0.3-x32.exe"
+OutFile "Instaladores\ExtratoBancario-0.0.3-x64.exe"
 Unicode True
 InstallDir "$LOCALAPPDATA\ExtratoBancario"
 InstallDirRegKey HKCU "SOFTWARE\ExtratoBancario" ""
@@ -70,7 +70,7 @@ Section ExtratoBancario
 
 	; Arquivos
 	SetOutPath "$INSTDIR"
-	File "Binarios\x32\Release\ExtratoBancario.exe"
+	File "Binarios\x64\Release\ExtratoBancario.exe"
 	File "ExtratoBancario.ico"
 
 	; Desinstalação
@@ -81,7 +81,7 @@ Section ExtratoBancario
 	CreateShortCut "$SMPROGRAMS\Extrato Bancário.lnk" "$INSTDIR\ExtratoBancario.exe" "" "$INSTDIR\ExtratoBancario.ico"
 
 	; Painel de Controle
-	WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ExtratoBancario" "DisplayName" "Extrato Bancário 0.0.3.0 x32"
+	WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ExtratoBancario" "DisplayName" "Extrato Bancário 0.0.3.0 x64"
 	WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ExtratoBancario" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
 	WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ExtratoBancario" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
 	WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ExtratoBancario" "InstallLocation" "$\"$INSTDIR$\""
