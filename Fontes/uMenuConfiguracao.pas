@@ -45,6 +45,7 @@ type
     edConexaoPorta: TEdit;
     btConexao: TBitBtn;
     procedure btConexaoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   public
     procedure Conectar;
     procedure Desconectar;
@@ -114,6 +115,14 @@ begin
   Self.btConexao.Caption := 'Conectar';
   dtmDataPrincipal.Desconectar;
   Self.Habilitar;
+end;
+
+procedure TfrmMenuConfiguracao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  Self.pcCorpo.Parent := TWinControl(Self.pcCorpo.Owner);
+  Self.pnConexao.Parent := TWinControl(Self.pnConexao.Owner);
 end;
 
 procedure TfrmMenuConfiguracao.Gravar;

@@ -1,6 +1,7 @@
 inherited frmMenuTransacao: TfrmMenuTransacao
   Caption = 'frmMenuTransacao'
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   TextHeight = 15
   inherited pnFundo: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -80,79 +81,15 @@ inherited frmMenuTransacao: TfrmMenuTransacao
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
-            object pnConsulta00: TPanel
+            object dbgConsulta: TDBGrid
               Left = 0
               Top = 0
               Width = 614
-              Height = 57
-              Align = alTop
-              TabOrder = 0
-              object pnConsulta03: TPanel
-                Left = 526
-                Top = 1
-                Width = 87
-                Height = 55
-                Align = alRight
-                BevelOuter = bvNone
-                TabOrder = 0
-                object btConsulta: TBitBtn
-                  Left = 6
-                  Top = 25
-                  Width = 75
-                  Height = 25
-                  Caption = 'Consultar'
-                  TabOrder = 0
-                end
-              end
-              object pnConsulta02: TPanel
-                Left = 516
-                Top = 1
-                Width = 10
-                Height = 55
-                Align = alRight
-                BevelOuter = bvNone
-                Color = clFuchsia
-                ParentBackground = False
-                TabOrder = 1
-                Visible = False
-              end
-              object pnConsulta01: TPanel
-                Left = 1
-                Top = 1
-                Width = 515
-                Height = 55
-                Align = alClient
-                BevelOuter = bvNone
-                TabOrder = 2
-                DesignSize = (
-                  515
-                  55)
-                object lbNome: TLabel
-                  Left = 8
-                  Top = 6
-                  Width = 33
-                  Height = 15
-                  Caption = 'Nome'
-                end
-                object cbNome: TComboBox
-                  Left = 8
-                  Top = 27
-                  Width = 501
-                  Height = 23
-                  Anchors = [akLeft, akTop, akRight]
-                  TabOrder = 0
-                end
-              end
-            end
-            object dbgConsulta: TDBGrid
-              Left = 0
-              Top = 57
-              Width = 614
-              Height = 310
+              Height = 367
               Align = alClient
               DataSource = dtmDataPrincipal.dtsPrincipal
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-              TabOrder = 1
+              TabOrder = 0
               TitleFont.Charset = DEFAULT_CHARSET
               TitleFont.Color = clWindowText
               TitleFont.Height = -12

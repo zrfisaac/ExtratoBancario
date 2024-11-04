@@ -4,10 +4,10 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">ExtratoBancario</ProjectName>
-        <TargetedPlatforms>3</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>ExtratoBancario.dpr</MainSource>
     </PropertyGroup>
@@ -90,11 +90,12 @@
         <DCC_DcuOutput>Objetos\x32</DCC_DcuOutput>
         <Icon_MainIcon>ExtratoBancario.ico</Icon_MainIcon>
         <VerInfo_Keys>CompanyName=Isaac Caires / zrfisaac.github.io
-;FileDescription=Controle de Extrato Bancário;FileVersion=0.0.3.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=0.0.3.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
+;FileDescription=Controle de Extrato Bancário;FileVersion=1.0.0.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=1.0.0.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
 </VerInfo_Keys>
         <UWP_DelphiLogo44>ExtratoBancario.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>ExtratoBancario.png</UWP_DelphiLogo150>
-        <VerInfo_Release>3</VerInfo_Release>
+        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>vclwinx;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;IndyIPClient;dbxcds;vcledge;bindcompvclwinx;FmxTeeUI;bindcompfmx;inetdb;ibmonitor;FireDACSqliteDriver;DbxClientDriver;Tee;soapmidas;vclactnband;TeeUI;fmxFireDAC;dbexpress;DBXMySQLDriver;VclSmp;inet;vcltouch;fmxase;dbrtl;fmxdae;TeeDB;FireDACMSAccDriver;CustomIPTransport;vcldsnap;DBXInterBaseDriver;IndySystem;Skia.Package.VCL;vcldb;ibxbindings;vclFireDAC;bindcomp;FireDACCommon;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;RESTComponents;DBXSqliteDriver;vcl;IndyIPServer;dsnapxml;dsnapcon;adortl;vclimg;FireDACPgDriver;FireDAC;inetdbxpress;xmlrtl;tethering;ibxpress;bindcompvcl;dsnap;CloudService;vclib;fmxobj;bindcompvclsmp;FMXTee;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
@@ -130,10 +131,11 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_ExeOutput>Binarios\x32\Debug</DCC_ExeOutput>
         <DCC_DcuOutput>Objetos\x32\Debug</DCC_DcuOutput>
-        <VerInfo_Keys>CompanyName=Isaac Caires / zrfisaac.github.io;FileDescription=Controle de Extrato Bancário;FileVersion=0.0.3.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=0.0.3.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Isaac Caires / zrfisaac.github.io;FileDescription=Controle de Extrato Bancário;FileVersion=1.0.0.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=1.0.0.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>ExtratoBancario.ico</Icon_MainIcon>
-        <VerInfo_Release>3</VerInfo_Release>
+        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -160,11 +162,12 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_DcuOutput>Objetos\x32\Release</DCC_DcuOutput>
-        <VerInfo_Release>3</VerInfo_Release>
+        <VerInfo_Release>0</VerInfo_Release>
         <Icon_MainIcon>ExtratoBancario.ico</Icon_MainIcon>
         <VerInfo_Keys>CompanyName=Isaac Caires / zrfisaac.github.io
-;FileDescription=Controle de Extrato Bancário;FileVersion=0.0.3.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=0.0.3.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
+;FileDescription=Controle de Extrato Bancário;FileVersion=1.0.0.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=1.0.0.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
 </VerInfo_Keys>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -1208,7 +1211,7 @@
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

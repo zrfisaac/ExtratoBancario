@@ -31,6 +31,8 @@ type
     acKey: TAction;
     miTransacao: TMenuItem;
     acTransacao: TAction;
+    miModelo: TMenuItem;
+    acModelo: TAction;
     procedure FormCreate(Sender: TObject);
     procedure acConfiguracaoExecute(Sender: TObject);
     procedure acSobreExecute(Sender: TObject);
@@ -38,6 +40,7 @@ type
     procedure acTransacaoExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure acModeloExecute(Sender: TObject);
   private
     FMenu: TForm;
   public
@@ -59,6 +62,10 @@ uses
   uMenuConfiguracao,
   uMenuSobre,
   uMenuTransacao;
+
+  resourcestring
+  RSConfirmarInsercaoTitulo = 'Confirmar Inserção';
+  RSConfirmarInsercaoMensagem = 'Você realmente deseja inserir um modelo de dados para teste? Isso pode sobrescrever dados existentes.';
 
 {$R *.dfm}
 
@@ -113,6 +120,22 @@ begin
   Self.Modal(TfrmMenuSobre);
 end;
 
+procedure TfrmMenuPrincipal.acModeloExecute(Sender: TObject);
+begin
+  if (dtmDataPrincipal.Conectado) then
+    if (
+      Application.MessageBox(
+         PChar(RSConfirmarInsercaoMensagem)
+        ,PChar(RSConfirmarInsercaoTitulo)
+        ,MB_YESNO + MB_ICONQUESTION
+      ) = IDYES
+    ) then
+    begin
+      dtmDataPrincipal.Modelo;
+      dtmDataPrincipal.Update;
+    end;
+end;
+
 procedure TfrmMenuPrincipal.acSobreExecute(Sender: TObject);
 begin
   Self.Modal(TfrmMenuSobre);
@@ -127,6 +150,7 @@ procedure TfrmMenuPrincipal.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Self.Limpar;
+  dtmDataPrincipal.Desconectar;
 end;
 
 procedure TfrmMenuPrincipal.FormCreate(Sender: TObject);

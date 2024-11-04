@@ -26,15 +26,16 @@ object frmMenuSobre: TfrmMenuSobre
     object pnFundo01: TPanel
       Left = 0
       Top = 0
-      Width = 153
+      Width = 324
       Height = 161
-      Align = alLeft
+      Align = alClient
       BevelOuter = bvNone
       Color = 2367774
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 153
       object Label1: TLabel
-        Left = 10
+        Left = 90
         Top = 16
         Width = 137
         Height = 45
@@ -49,7 +50,7 @@ object frmMenuSobre: TfrmMenuSobre
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 10
+        Left = 90
         Top = 67
         Width = 137
         Height = 32
@@ -64,7 +65,7 @@ object frmMenuSobre: TfrmMenuSobre
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 10
+        Left = 90
         Top = 105
         Width = 137
         Height = 32
@@ -78,29 +79,6 @@ object frmMenuSobre: TfrmMenuSobre
         Font.Style = []
         ParentFont = False
       end
-    end
-    object pnFundo02: TPanel
-      Left = 153
-      Top = 0
-      Width = 9
-      Height = 161
-      Align = alLeft
-      BevelOuter = bvNone
-      Color = clFuchsia
-      ParentBackground = False
-      TabOrder = 1
-      Visible = False
-    end
-    object Panel1: TPanel
-      Left = 162
-      Top = 0
-      Width = 162
-      Height = 161
-      Align = alClient
-      BevelOuter = bvNone
-      Color = 2367774
-      ParentBackground = False
-      TabOrder = 2
     end
   end
   object acAcao: TActionList

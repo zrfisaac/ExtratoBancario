@@ -32,14 +32,7 @@ type
     pnCadastro: TPanel;
     pnConsulta: TPanel;
     sbCadastro: TScrollBox;
-    pnConsulta00: TPanel;
     dbgConsulta: TDBGrid;
-    pnConsulta03: TPanel;
-    btConsulta: TBitBtn;
-    pnConsulta02: TPanel;
-    pnConsulta01: TPanel;
-    cbNome: TComboBox;
-    lbNome: TLabel;
     pnCadastroId: TPanel;
     lbCadastroId: TLabel;
     Panel2: TPanel;
@@ -65,6 +58,7 @@ type
     procedure btCancelarClick(Sender: TObject);
     procedure edCadastroValorKeyPress(Sender: TObject; var Key: Char);
     procedure dbgConsultaDblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FTipo: TTipoMenuTransacao;
     function GetId: Integer;
@@ -95,12 +89,13 @@ uses
   uUnitTransacao;
 
 resourcestring
+  RSConfirmarExclusaoTitulo = 'Confirmar Exclusão';
+  RSConfirmarExclusaoMensagem = 'Você realmente deseja excluir esta transação?'#13#10#13#10'Esta ação não pode ser desfeita.';
   RSErroConexaoTitulo = 'Erro de Conexão';
   RSErroConexaoMensagem = 'Não foi possível estabelecer uma conexão com o banco de dados.'#13#10#13#10'Resolva primeiro o problema de conexão para poder continuar!';
   RSErroPreenchidoTitulo = 'Aviso!';
   RSErroPreenchidoMensagem = 'Não foi possível salvar:';
   RSErroPreenchidoLinha = '* Por favor, preencha o campo %s';
-
 
 {$R *.dfm}
 
@@ -114,7 +109,14 @@ end;
 procedure TfrmMenuTransacao.btApagarClick(Sender: TObject);
 begin
   inherited;
-  Self.Apagar;
+  if (
+    Application.MessageBox(
+       PChar(RSConfirmarExclusaoMensagem)
+      ,PChar(RSConfirmarExclusaoTitulo)
+      ,MB_YESNO + MB_ICONQUESTION
+    ) = IDYES
+  ) then
+    Self.Apagar;
 end;
 
 procedure TfrmMenuTransacao.btCancelarClick(Sender: TObject);
@@ -181,6 +183,15 @@ begin
   else
     Self.cbCadastroTipo.ItemIndex := 1;
   Self.Visual;
+end;
+
+procedure TfrmMenuTransacao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  Self.pcCorpo.Parent := TWinControl(Self.pcCorpo.Owner);
+  Self.pnConsulta.Parent := TWinControl(Self.pnConsulta.Owner);
+  Self.pnCadastro.Parent := TWinControl(Self.pnCadastro.Owner);
 end;
 
 procedure TfrmMenuTransacao.FormCreate(Sender: TObject);
@@ -273,8 +284,7 @@ end;
 
 procedure TfrmMenuTransacao.Update;
 begin
-  dtmDataPrincipal.qryPrincipal.Close;
-  dtmDataPrincipal.qryPrincipal.Open;
+  dtmDataPrincipal.Update;
 end;
 
 function TfrmMenuTransacao.Verificar: Boolean;

@@ -41,6 +41,9 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   object miMenu: TMainMenu
     Left = 16
     Top = 16
+    object miModelo: TMenuItem
+      Action = acModelo
+    end
     object miTransacao: TMenuItem
       Action = acTransacao
     end
@@ -74,6 +77,11 @@ object frmMenuPrincipal: TfrmMenuPrincipal
       Category = 'Menu'
       Caption = 'Transa'#231#227'o'
       OnExecute = acTransacaoExecute
+    end
+    object acModelo: TAction
+      Category = 'Menu'
+      Caption = 'Modelo'
+      OnExecute = acModeloExecute
     end
   end
 end

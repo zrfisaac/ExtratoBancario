@@ -1,6 +1,7 @@
 inherited frmMenuConfiguracao: TfrmMenuConfiguracao
   Caption = 'frmMenuConfiguracao'
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   TextHeight = 15
   inherited pnFundo: TPanel
     StyleElements = [seFont, seClient, seBorder]

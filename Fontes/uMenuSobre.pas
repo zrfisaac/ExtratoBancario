@@ -17,8 +17,6 @@ type
   TfrmMenuSobre = class(TForm)
     pnFundo: TPanel;
     pnFundo01: TPanel;
-    pnFundo02: TPanel;
-    Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
