@@ -1,7 +1,7 @@
 # Extrato Bancário <img src="ExtratoBancario.png" alt="Logo" width="42" height="42">
 [![](https://img.shields.io/badge/release-1.0.0-blue?style=flat-square&logoColor=white)](https://github.com/zrfisaac/ExtratoBancario/releases/download/v1.0.0/ExtratoBancario-1.0.0-x32.exe)
 [![](https://img.shields.io/badge/windows-x32-darkgreen?style=flat-square&logoColor=white)](https://github.com/zrfisaac/ExtratoBancario/releases/download/v1.0.0/ExtratoBancario-1.0.0-x32.exe)
-[![](https://img.shields.io/badge/fonte-zip-red?style=flat-square&logoColor=white)](https://github.com/zrfisaac/ExtratoBancario/archive/refs/tags/v0.0.3.zip)
+[![](https://img.shields.io/badge/fonte-zip-red?style=flat-square&logoColor=white)](https://github.com/zrfisaac/ExtratoBancario/archive/refs/tags/v1.0.0.zip)
 
 **Descrição:**
 Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.
