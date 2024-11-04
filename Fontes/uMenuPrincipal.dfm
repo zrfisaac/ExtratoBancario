@@ -12,7 +12,9 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   Font.Style = []
   Menu = miMenu
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object pnFundo: TPanel
     Left = 0
@@ -33,11 +35,39 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   object miMenu: TMainMenu
     Left = 16
     Top = 16
-    object miConfig: TMenuItem
-      Caption = 'Configura'#231#227'o'
+    object miTransacao: TMenuItem
+      Action = acTransacao
+    end
+    object miConfiguracao: TMenuItem
+      Action = acConfiguracao
     end
     object miSobre: TMenuItem
+      Action = acSobre
+    end
+  end
+  object acAcao: TActionList
+    Left = 16
+    Top = 72
+    object acSobre: TAction
+      Category = 'Menu'
       Caption = 'Sobre'
+      OnExecute = acSobreExecute
+    end
+    object acConfiguracao: TAction
+      Category = 'Menu'
+      Caption = 'Configura'#231#227'o'
+      OnExecute = acConfiguracaoExecute
+    end
+    object acKey: TAction
+      Category = 'Key'
+      Caption = 'acF1'
+      ShortCut = 112
+      OnExecute = acKeyExecute
+    end
+    object acTransacao: TAction
+      Category = 'Menu'
+      Caption = 'Transa'#231#227'o'
+      OnExecute = acTransacaoExecute
     end
   end
 end

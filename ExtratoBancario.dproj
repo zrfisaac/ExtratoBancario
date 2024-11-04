@@ -131,6 +131,7 @@
         <DCC_DcuOutput>Objetos\x32\Debug</DCC_DcuOutput>
         <VerInfo_Keys>CompanyName=Isaac Caires / zrfisaac.github.io;FileDescription=Controle de Extrato Bancário;FileVersion=0.0.1.0;InternalName=zrfisaac.project.ExtratoBancario;LegalCopyright=Isaac Caires / zrfisaac.github.io;LegalTrademarks=Isaac Caires / zrfisaac.github.io;OriginalFilename=ExtratoBancario;ProgramID=zrfisaac.project.ExtratoBancario;ProductName=Extrato Bancário;ProductVersion=0.0.1.0;Comments=Uma aplicação simples e eficiente para gestão de extratos bancários, permitindo adicionar, editar, remover e listar transações de crédito e débito.</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>ExtratoBancario.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -194,6 +195,19 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Fontes\uUnitAjuda.pas"/>
+        <DCCReference Include="Fontes\uMenuConfiguracao.pas">
+            <Form>frmMenuConfiguracao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fontes\uMenuSobre.pas">
+            <Form>frmMenuSobre</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fontes\uMenuTransacao.pas">
+            <Form>frmMenuTransacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fontes\uUnitTransacao.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
